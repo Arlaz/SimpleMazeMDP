@@ -55,7 +55,7 @@ class Mdp:
         # else it is drawn from a uniform distribution over all the states except for walls
 
         if uniform:
-            prob = np.ones(self.nb_states - 1) / (self.nb_states - 1)
+            prob = np.ones(self.nb_states) / (self.nb_states)
             self.current_state = sample_categorical(prob)
         else:
             self.current_state = sample_categorical(self.P0)
