@@ -1,4 +1,4 @@
-# SimpleMazeMDP: 
+# TabularMazeMDP: 
 
 This repository contains code to provide a simple Maze environment used as example MDP for tabular dynamic programming and reinforcement learning labs.
 
