@@ -5,7 +5,7 @@ Author: Olivier Sigaud
 from functools import cached_property
 import numpy as np
 
-from mazemdp.toolbox import sample_categorical
+from tabularmazemdp.toolbox import sample_categorical
 
 
 class Mdp:
