@@ -40,7 +40,7 @@ def check_navigability(mdp: Mdp):
             stop = True
 
     # We should reach terminal states from any starting point
-    reachable = mdp.nb_states - np.count_nonzero(v) == len(mdp.terminal_states)
+    reachable = (mdp.nb_states - np.count_nonzero(v) == 0)
     return reachable
 
 
