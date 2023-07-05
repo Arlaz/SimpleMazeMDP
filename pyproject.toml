@@ -1,6 +1,6 @@
 [project]
 name = "tabularmazemdp"
-description = "An simple maze to test dynamic programming and tabular reinforcement learning algorithms"
+description = "A simple maze to test dynamic programming and tabular reinforcement learning algorithms"
 authors = [
     {name = "Olivier Sigaud", email = "Olivier.Sigaud@isir.upmc.fr"},
     {name = "Mathis Koroglu", email = "mathis.koroglu@isir.upmc.fr"}
