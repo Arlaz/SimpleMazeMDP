@@ -89,8 +89,8 @@ class Mdp:
             "reward's noise value": noise,
         }  # can be used when debugging
 
-        self.current_state = next_state
         done = self.done()  # checks if the episode is over
+        self.current_state = next_state
 
         return [next_state, reward, done, info]
 
