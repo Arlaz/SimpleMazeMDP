@@ -1,8 +1,8 @@
 import numpy as np
 
-from mazemdp import create_random_maze
-from mazemdp.chrono import Chrono
-from mazemdp.toolbox import egreedy_loc
+from tabularmazemdp import create_random_maze
+from tabularmazemdp.chrono import Chrono
+from tabularmazemdp.toolbox import egreedy_loc
 
 import matplotlib
 
@@ -15,7 +15,6 @@ def test_create():
     chrono = Chrono()
     mdp, *args = create_random_maze(5, 5, 0.2, hit=True)
     mdp.new_render("Test visu maze")
-    print(mdp.action_space)
     chrono.stop()
 
 
@@ -26,14 +25,14 @@ def test_maze_visu():
         random_value = np.random.random(size=(mdp.nb_states,))
         mdp.render(random_value, title="Test visu")
 
-    random_policy = np.random.randint(mdp.action_space.n, size=(mdp.nb_states,))
+    random_policy = np.random.randint(mdp.nb_actions, size=(mdp.nb_states,))
     # Note: apparently not showing anything...
     mdp.render(random_value, random_policy, title="Test visu")
     mdp.plotter.render_pi(random_policy)
 
     mdp.new_render("Test visu q-value")
     for _ in range(3):
-        random_q_value = np.random.random(size=(mdp.nb_states, mdp.action_space.n))
+        random_q_value = np.random.random(size=(mdp.nb_states, mdp.nb_actions))
         mdp.render(random_q_value, title="Test visu q-value")
 
 
@@ -41,7 +40,7 @@ def test_step():
     mdp, *args = create_random_maze(5, 4, 0.2)
     x = mdp.reset(uniform=True)
     done = mdp.done()
-    random_policy = np.random.randint(mdp.action_space.n, size=(mdp.nb_states,))
+    random_policy = np.random.randint(mdp.nb_actions, size=(mdp.nb_states,))
     random_value = np.random.random(size=(mdp.nb_states,))
     mdp.new_render("Test step")
 
@@ -49,7 +48,7 @@ def test_step():
         # Show agent
         mdp.render(random_value, random_policy)
         x, _, done, _ = mdp.step(
-            egreedy_loc(random_policy[x], mdp.action_space.n, epsilon=0.2)
+            egreedy_loc(random_policy[x], mdp.nb_actions, epsilon=0.2)
         )
 
 
