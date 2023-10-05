@@ -49,7 +49,7 @@ class Mdp:
         return gym.spaces.Discrete(self.nb_actions)
     
     def reset(
-        self, uniform=False
+            self, uniform=False, **kwargs
     ):  # initializes an episode and returns the state of the agent
         # if uniform is set to False, the first state is drawn according to the P0 distribution,
         # else it is drawn from a uniform distribution over all the states except for walls
