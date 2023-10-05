@@ -133,4 +133,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 test.py
-src/mazemdp/_version.py
+src/tabularmazemdp/_version.py
