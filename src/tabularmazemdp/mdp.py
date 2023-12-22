@@ -96,8 +96,8 @@ class Mdp:
         return [next_state, reward, done, info]
 
     def sample_transition(self):
-        state = random.randint(0, self.nb_states)
-        action = random.randint(0, self.nb_actions)
+        state = random.randint(0, self.nb_states -1)
+        action = random.randint(0, self.nb_actions -1)
         next_state = sample_categorical(self.P[state, action, :])
         return state, action, next_state
 
