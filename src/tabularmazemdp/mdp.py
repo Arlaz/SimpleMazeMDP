@@ -4,6 +4,7 @@ Author: Olivier Sigaud
 
 from functools import cached_property
 import numpy as np
+import random
 
 from tabularmazemdp.toolbox import sample_categorical
 
@@ -93,6 +94,12 @@ class Mdp:
         self.current_state = next_state
 
         return [next_state, reward, done, info]
+
+    def sample_transition(self):
+        state = random.randint(0, self.nb_states)
+        action = random.randint(0, self.nb_actions)
+        next_state = sample_categorical(self.P[state, action, :])
+        return state, action, next_state
 
     def new_render(
         self, title, mode="human"
