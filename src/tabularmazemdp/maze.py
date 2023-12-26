@@ -222,13 +222,11 @@ class Maze:  # describes a maze-like environment
                         transition_matrix[state][W][self.cells[i - 1][j]] = 1.0
 
         # Transition Matrix of terminal states
-        for s in self.last_states:
-            transition_matrix[s, :, s] = 1
+        # for s in self.last_states:
+            # transition_matrix[s, :, s] = 1
 
         return transition_matrix
 
-        # self.mdp = MyMdp(self.nb_states, self.action_space, start_distribution, transition_matrix, reward_matrix,
-        #                plotter, proba_action=0.5, gamma=gamma, terminal_states=terminal_states, timeout=timeout)
 
     # --------------------------------- Reward Matrix ---------------------------------
     def simple_reward(self, transition_matrix: np.array):
