@@ -66,8 +66,7 @@ class Mdp:
         return self.current_state
 
     def terminated(self):  # returns True if a terminal state was reached
-        if self.current_state in self.terminal_states:
-            return True
+        return self.current_state in self.terminal_states:
         
     def truncated(self):
         return self.timestep == self.timeout  # truncated when timeout reached
