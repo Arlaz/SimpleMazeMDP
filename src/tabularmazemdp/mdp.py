@@ -65,10 +65,12 @@ class Mdp:
         self.last_action_achieved = False
         return self.current_state
 
-    def done(self):  # returns True if the episode is over
+    def terminated(self):  # returns True if a terminal state was reached
         if self.current_state in self.terminal_states:
             return True
-        return self.timestep == self.timeout  # done when timeout reached
+        
+    def truncated(self):
+        return self.timestep == self.timeout  # truncated when timeout reached
 
     def step(self, u, deviation=0):  # performs a step forward in the environment,
         # if you want to add some noise to the reward, give a value to the deviation param
@@ -90,10 +92,11 @@ class Mdp:
             "reward's noise value": noise,
         }  # can be used when debugging
 
-        done = self.done()  # checks if the episode is over
+        terminated = self.terminated()  # checks if the episode is over
+        truncated = self.truncated()  # checks if timit limit was reached
         self.current_state = next_state
 
-        return [next_state, reward, done, info]
+        return next_state, reward, terminated, truncated, info
 
     def sample_transition(self):
         state = random.randint(0, self.nb_states -1)
